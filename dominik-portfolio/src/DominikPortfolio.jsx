@@ -195,7 +195,7 @@ export default function DominikPortfolio() {
   };
 
   if (activePage) {
-    return <CategoryPage groupKey={activePage} onBack={() => setActivePage(null)} onContact={() => setShowContact(true)} showContact={showContact} setShowContact={setShowContact} />;
+    return <CategoryPage groupKey={activePage} onBack={() => setActivePage(null)} onContact={() => setShowContact(true)} onChangeCategory={setActivePage} showContact={showContact} setShowContact={setShowContact} />;
   }
 
   return (
@@ -245,7 +245,7 @@ export default function DominikPortfolio() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
           <div>
             <SectionTitle label="About me" title="More about me." />
-            <div className="mt-10 max-w-4xl space-y-8 text-xl font-medium leading-[1.9] text-white/82 md:text-2xl">
+            <div className="mt-10 max-w-4xl space-y-8 text-xl font-medium leading-[1.9] text-white/65 md:text-2xl">
               <p>After completing my Bachelor degree in Business, I moved to Australia in 2020. What was originally meant to be a short getaway quickly turned into a much longer journey.</p>
               <p>Over the years, I have lived and worked across different regions, industries and communities, exploring new jobs, new environments and different ways of life. It has been an experience that has shaped me significantly, both professionally and personally.</p>
               <p>Before moving abroad, I worked as a student business consultant and university tutor while completing my studies. Through these roles, I developed strong analytical, communication and problem-solving skills while gaining experience in market research, finance and economics.</p>
@@ -336,7 +336,7 @@ function CategoryCard({ groupKey, group, onExplore }) {
   );
 }
 
-function CategoryPage({ groupKey, onBack, onContact, showContact, setShowContact }) {
+function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showContact, setShowContact }) {
   const group = experienceGroups[groupKey];
   const [slide, setSlide] = useState(0);
   const hasPhotos = group.photos.length > 0;
@@ -350,6 +350,25 @@ function CategoryPage({ groupKey, onBack, onContact, showContact, setShowContact
         <button type="button" onClick={onBack} className="font-serif text-4xl font-black tracking-[-0.12em] text-[#d6a94a]">DP</button>
         <button type="button" onClick={onBack} className="text-sm font-bold uppercase tracking-[0.14em] text-white/70 hover:text-[#d6a94a]">Back to home</button>
       </nav>
+
+      <div className="mx-auto max-w-7xl px-6 pb-8 md:px-10 lg:px-16">
+        <div className="inline-flex flex-wrap gap-2 rounded-full border border-white/10 bg-white/[0.04] p-2">
+          {Object.entries(experienceGroups).map(([key, item]) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => onChangeCategory(key)}
+              className={`rounded-full px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] transition ${
+                groupKey === key
+                  ? "bg-[#d6a94a] text-black"
+                  : "text-white/65 hover:bg-white/10 hover:text-[#d6a94a]"
+              }`}
+            >
+              {item.title.replace("Agriculture & Farm Operations", "Agriculture").replace("Business & Strategy", "Business")}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-8 md:px-10 lg:grid-cols-[.75fr_1.25fr] lg:px-16">
         <div>
