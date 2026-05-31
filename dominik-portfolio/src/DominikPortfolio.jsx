@@ -242,20 +242,18 @@ export default function DominikPortfolio() {
       </section>
 
       <section id="about" className="relative border-y border-white/10 bg-[#101211] px-6 py-20 md:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
-          <div>
-            <SectionTitle label="About me" title="More about me." />
-            <div className="mt-10 max-w-4xl space-y-8 text-xl font-medium leading-[1.9] text-white/82 md:text-2xl">
-              <p>After completing my Bachelor degree in Business, I moved to Australia in 2020. What was originally meant to be a short getaway quickly turned into a much longer journey.</p>
-              <p>Over the years, I have lived and worked across different regions, industries and communities, exploring new jobs, new environments and different ways of life. It has been an experience that has shaped me significantly, both professionally and personally.</p>
-              <p>Before moving abroad, I worked as a student business consultant and university tutor while completing my studies. Through these roles, I developed strong analytical, communication and problem-solving skills while gaining experience in market research, finance and economics.</p>
-              <p>Since arriving in Australia, I have taken opportunities across agriculture, machinery operation, hospitality, property management and team leadership. Each role has taught me something different and helped me develop a diverse skill set that combines practical hands-on experience with a strong business background.</p>
-              <p>I genuinely enjoy learning new things, meeting new people and challenging myself in unfamiliar environments. Whether I am leading a team, operating machinery, working with customers or taking on a completely new challenge, I bring curiosity, adaptability and a strong work ethic to everything I do.</p>
-              <p>The journey is still ongoing, and I look forward to continuing to learn, grow and take on new opportunities wherever they may lead.</p>
-            </div>
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
+          <SectionTitle label="About me" title="More about me." />
+          <div className="space-y-6 text-lg leading-8 text-white/76">
+            <p>After completing my Bachelor degree in Business, I moved to Australia in 2020. What was originally meant to be a short getaway quickly turned into a much longer journey.</p>
+            <p>Over the years, I have lived and worked across different regions, industries and communities, exploring new jobs, new environments and different ways of life. It has been an experience that has shaped me significantly, both professionally and personally.</p>
+            <p>Before moving abroad, I worked as a student business consultant and university tutor while completing my studies. Through these roles, I developed strong analytical, communication and problem-solving skills while gaining experience in market research, finance and economics.</p>
+            <p>Since arriving in Australia, I have taken opportunities across agriculture, machinery operation, hospitality, property management and team leadership. Each role has taught me something different and helped me develop a diverse skill set that combines practical hands-on experience with a strong business background.</p>
+            <p>I genuinely enjoy learning new things, meeting new people and challenging myself in unfamiliar environments. Whether I am leading a team, operating machinery, working with customers or taking on a completely new challenge, I bring curiosity, adaptability and a strong work ethic to everything I do.</p>
+            <p>The journey is still ongoing, and I look forward to continuing to learn, grow and take on new opportunities wherever they may lead.</p>
           </div>
-          <div className="space-y-7 border-l border-white/10 pl-7 lg:pl-10">
-            <p className="mb-6 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">What drives me</p>
+          <div className="space-y-5 border-l border-white/10 pl-7">
+            <p className="mb-6 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">What drives me</p>
             {highlights.map((item) => <Highlight key={item.title} {...item} />)}
           </div>
         </div>
@@ -281,32 +279,18 @@ export default function DominikPortfolio() {
       </section>
 
       <section id="skills" className="border-y border-white/10 bg-[#101211] px-6 py-24 md:px-10 lg:px-16">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.65fr_1fr]">
           <SectionTitle label="Skills" title="Skills & tickets." />
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-8 md:p-10">
-              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Strengths</h3>
-              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-7">
+              <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">Strengths</h3>
               <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <span key={skill} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/75">
-                    {skill}
-                  </span>
-                ))}
+                {skills.map((skill) => <span key={skill} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/75">{skill}</span>)}
               </div>
             </div>
-
-            <div className="rounded-xl border border-[#d6a94a]/35 bg-[#d6a94a]/10 p-8 md:p-10">
-              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Certifications</h3>
-              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
-              <p className="text-lg leading-9 text-white/75">{certs.join(" · ")}</p>
-            </div>
-
-            <div className="rounded-xl border border-[#d6a94a]/35 bg-[#d6a94a]/10 p-8 md:p-10">
-              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Machinery Tickets</h3>
-              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
-              <p className="text-lg leading-9 text-white/75">{tickets.join(" · ")}</p>
+            <div className="space-y-6">
+              <InfoBox title="Certifications" text={certs.join(" · ")} />
+              <InfoBox title="Machinery Tickets" text={tickets.join(" · ")} />
             </div>
           </div>
         </div>
