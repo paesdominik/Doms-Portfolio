@@ -21,7 +21,7 @@ import {
   ChevronRight
 } from "lucide-react";
 
-const heroImage = "/images/IMG_8890 2.jpg";
+const heroImage = "/images/IMG_8890.jpg";
 
 const farmPhotos = [
   { src: "/images/image000000.JPG", title: "Header Harvesting", text: "Some of the machinery I worked with across large-scale grain harvesting operations." },
@@ -201,7 +201,7 @@ export default function DominikPortfolio() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#070807] text-white selection:bg-[#d6a94a]/60">
       <section id="top" className="relative min-h-screen overflow-hidden">
-        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-0 h-full w-full object-cover object-[72%_center]" />
+        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-y-0 left-0 h-full w-[115%] max-w-none translate-x-[6%] object-cover object-center md:translate-x-[8%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/5" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070807] via-transparent to-black/20" />
 
