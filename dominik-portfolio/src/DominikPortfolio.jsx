@@ -385,9 +385,14 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
               <img src={currentPhoto.src} alt={currentPhoto.title} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7">
-                <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">{groupKey === "farm" ? "Machinery & Operations" : "Properties & Guest Spaces"}</p>
-                <h2 className="mt-3 text-4xl font-black tracking-[-0.07em]">{currentPhoto.title}</h2>
-                <p className="mt-3 max-w-2xl text-white/70">{currentPhoto.text}</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">
+                  {groupKey === "farm" ? "Machinery & Operations" : "Properties & Guest Spaces"}
+                </p>
+                <p className="mt-3 max-w-2xl text-lg leading-8 text-white/75">
+                  {groupKey === "farm"
+                    ? "Some of the machineries I have used at various work places."
+                    : "A small selection of the properties I looked after."}
+                </p>
               </div>
               <button type="button" onClick={prev} className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white hover:bg-[#d6a94a] hover:text-black"><ChevronLeft /></button>
               <button type="button" onClick={next} className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white hover:bg-[#d6a94a] hover:text-black"><ChevronRight /></button>
