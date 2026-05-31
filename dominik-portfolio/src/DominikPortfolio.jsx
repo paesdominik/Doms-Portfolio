@@ -21,7 +21,7 @@ import {
   ChevronRight
 } from "lucide-react";
 
-const heroImage = "/images/IMG_8890 2.jpg";
+const heroImage = "/images/IMG_8890.jpg";
 
 const farmPhotos = [
   { src: "/images/image000000.JPG", title: "Header Harvesting", text: "Some of the machinery I worked with across large-scale grain harvesting operations." },
@@ -49,7 +49,7 @@ const hospitalityPhotos = [
   { src: "/images/IMG_2002.JPG", title: "View & Living Area", text: "Premium spaces maintained for short-stay guests." },
   { src: "/images/IMG_2008.JPG", title: "Modern Lounge", text: "Property care across different accommodation styles." },
   { src: "/images/IMG_2009.JPG", title: "Outdoor Guest Area", text: "Indoor and outdoor spaces prepared for guests." },
-  { src: "/images/IMG_5614.JPG", title: "Evening Living Space", text: "A selection of the properties and guest spaces I looked after." }
+  { src: "/images/IMG_5614.JPG", title: "Evening Living Space", text: "A small selection of the properties I looked after." }
 ];
 
 const experienceGroups = {
@@ -195,13 +195,13 @@ export default function DominikPortfolio() {
   };
 
   if (activePage) {
-    return <CategoryPage groupKey={activePage} onBack={() => setActivePage(null)} onContact={() => setShowContact(true)} showContact={showContact} setShowContact={setShowContact} />;
+    return <CategoryPage groupKey={activePage} onBack={() => setActivePage(null)} onContact={() => setShowContact(true)} onChangeCategory={setActivePage} showContact={showContact} setShowContact={setShowContact} />;
   }
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#070807] text-white selection:bg-[#d6a94a]/60">
       <section id="top" className="relative min-h-screen overflow-hidden">
-        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-0 h-full w-full object-cover object-[72%_center]" />
+        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-y-0 left-0 h-full w-[115%] max-w-none translate-x-[6%] object-cover object-center md:translate-x-[8%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/5" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070807] via-transparent to-black/20" />
 
@@ -242,18 +242,20 @@ export default function DominikPortfolio() {
       </section>
 
       <section id="about" className="relative border-y border-white/10 bg-[#101211] px-6 py-20 md:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.65fr_1fr_.55fr] lg:items-start">
-          <SectionTitle label="About me" title="More about me." />
-          <div className="space-y-6 text-lg leading-8 text-white/76">
-            <p>After completing my Bachelor degree in Business, I moved to Australia in 2020. What was originally meant to be a short getaway quickly turned into a much longer journey.</p>
-            <p>Over the years, I have lived and worked across different regions, industries and communities, exploring new jobs, new environments and different ways of life. It has been an experience that has shaped me significantly, both professionally and personally.</p>
-            <p>Before moving abroad, I worked as a student business consultant and university tutor while completing my studies. Through these roles, I developed strong analytical, communication and problem-solving skills while gaining experience in market research, finance and economics.</p>
-            <p>Since arriving in Australia, I have taken opportunities across agriculture, machinery operation, hospitality, property management and team leadership. Each role has taught me something different and helped me develop a diverse skill set that combines practical hands-on experience with a strong business background.</p>
-            <p>I genuinely enjoy learning new things, meeting new people and challenging myself in unfamiliar environments. Whether I am leading a team, operating machinery, working with customers or taking on a completely new challenge, I bring curiosity, adaptability and a strong work ethic to everything I do.</p>
-            <p>The journey is still ongoing, and I look forward to continuing to learn, grow and take on new opportunities wherever they may lead.</p>
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
+          <div>
+            <SectionTitle label="About me" title="More about me." />
+            <div className="mt-10 max-w-4xl space-y-8 text-xl font-medium leading-[1.9] text-white/65 md:text-2xl">
+              <p>After completing my Bachelor degree in Business, I moved to Australia in 2020. What was originally meant to be a short getaway quickly turned into a much longer journey.</p>
+              <p>Over the years, I have lived and worked across different regions, industries and communities, exploring new jobs, new environments and different ways of life. It has been an experience that has shaped me significantly, both professionally and personally.</p>
+              <p>Before moving abroad, I worked as a student business consultant and university tutor while completing my studies. Through these roles, I developed strong analytical, communication and problem-solving skills while gaining experience in market research, finance and economics.</p>
+              <p>Since arriving in Australia, I have taken opportunities across agriculture, machinery operation, hospitality, property management and team leadership. Each role has taught me something different and helped me develop a diverse skill set that combines practical hands-on experience with a strong business background.</p>
+              <p>I genuinely enjoy learning new things, meeting new people and challenging myself in unfamiliar environments. Whether I am leading a team, operating machinery, working with customers or taking on a completely new challenge, I bring curiosity, adaptability and a strong work ethic to everything I do.</p>
+              <p>The journey is still ongoing, and I look forward to continuing to learn, grow and take on new opportunities wherever they may lead.</p>
+            </div>
           </div>
-          <div className="space-y-5 border-l border-white/10 pl-7">
-            <p className="mb-6 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">What drives me</p>
+          <div className="space-y-7 border-l border-white/10 pl-7 lg:pl-10">
+            <p className="mb-6 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">What drives me</p>
             {highlights.map((item) => <Highlight key={item.title} {...item} />)}
           </div>
         </div>
@@ -279,18 +281,32 @@ export default function DominikPortfolio() {
       </section>
 
       <section id="skills" className="border-y border-white/10 bg-[#101211] px-6 py-24 md:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.65fr_1fr]">
+        <div className="mx-auto max-w-7xl">
           <SectionTitle label="Skills" title="Skills & tickets." />
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-7">
-              <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">Strengths</h3>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-8 md:p-10">
+              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Strengths</h3>
+              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
               <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => <span key={skill} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/75">{skill}</span>)}
+                {skills.map((skill) => (
+                  <span key={skill} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/75">
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="space-y-6">
-              <InfoBox title="Certifications" text={certs.join(" · ")} />
-              <InfoBox title="Machinery Tickets" text={tickets.join(" · ")} />
+
+            <div className="rounded-xl border border-[#d6a94a]/35 bg-[#d6a94a]/10 p-8 md:p-10">
+              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Certifications</h3>
+              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
+              <p className="text-lg leading-9 text-white/75">{certs.join(" · ")}</p>
+            </div>
+
+            <div className="rounded-xl border border-[#d6a94a]/35 bg-[#d6a94a]/10 p-8 md:p-10">
+              <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.34em] text-[#d6a94a]">Machinery Tickets</h3>
+              <div className="mb-7 h-px w-12 bg-[#d6a94a]" />
+              <p className="text-lg leading-9 text-white/75">{tickets.join(" · ")}</p>
             </div>
           </div>
         </div>
@@ -320,7 +336,7 @@ function CategoryCard({ groupKey, group, onExplore }) {
   );
 }
 
-function CategoryPage({ groupKey, onBack, onContact, showContact, setShowContact }) {
+function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showContact, setShowContact }) {
   const group = experienceGroups[groupKey];
   const [slide, setSlide] = useState(0);
   const hasPhotos = group.photos.length > 0;
@@ -334,6 +350,25 @@ function CategoryPage({ groupKey, onBack, onContact, showContact, setShowContact
         <button type="button" onClick={onBack} className="font-serif text-4xl font-black tracking-[-0.12em] text-[#d6a94a]">DP</button>
         <button type="button" onClick={onBack} className="text-sm font-bold uppercase tracking-[0.14em] text-white/70 hover:text-[#d6a94a]">Back to home</button>
       </nav>
+
+      <div className="mx-auto max-w-7xl px-6 pb-8 md:px-10 lg:px-16">
+        <div className="inline-flex flex-wrap gap-2 rounded-full border border-white/10 bg-white/[0.04] p-2">
+          {Object.entries(experienceGroups).map(([key, item]) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => onChangeCategory(key)}
+              className={`rounded-full px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] transition ${
+                groupKey === key
+                  ? "bg-[#d6a94a] text-black"
+                  : "text-white/65 hover:bg-white/10 hover:text-[#d6a94a]"
+              }`}
+            >
+              {item.title.replace("Agriculture & Farm Operations", "Agriculture").replace("Business & Strategy", "Business")}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-8 md:px-10 lg:grid-cols-[.75fr_1.25fr] lg:px-16">
         <div>
@@ -350,9 +385,14 @@ function CategoryPage({ groupKey, onBack, onContact, showContact, setShowContact
               <img src={currentPhoto.src} alt={currentPhoto.title} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7">
-                <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">{groupKey === "farm" ? "Machinery & Operations" : "Properties & Guest Spaces"}</p>
-                <h2 className="mt-3 text-4xl font-black tracking-[-0.07em]">{currentPhoto.title}</h2>
-                <p className="mt-3 max-w-2xl text-white/70">{currentPhoto.text}</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">
+                  {groupKey === "farm" ? "Machinery & Operations" : "Properties & Guest Spaces"}
+                </p>
+                <p className="mt-3 max-w-2xl text-lg leading-8 text-white/75">
+                  {groupKey === "farm"
+                    ? "Some of the machinery I have operated across various workplaces."
+                    : "A selection of the properties and guest spaces I looked after."}
+                </p>
               </div>
               <button type="button" onClick={prev} className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white hover:bg-[#d6a94a] hover:text-black"><ChevronLeft /></button>
               <button type="button" onClick={next} className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white hover:bg-[#d6a94a] hover:text-black"><ChevronRight /></button>
