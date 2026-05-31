@@ -52,6 +52,11 @@ const hospitalityPhotos = [
   { src: "/images/IMG_5614.JPG", title: "Evening Living Space", text: "A small selection of the properties I looked after." }
 ];
 
+const otherJobPhotos = [
+  { src: "/images/d31220ac-a436-4eea-9f96-fb33cad0c456.JPG", title: "Solar Farm", text: "Solar farm construction and panel installation work." },
+  { src: "/images/IMG_8513.JPG", title: "Metal Roofing", text: "Metal roofing labouring and construction work." }
+];
+
 const experienceGroups = {
   farm: {
     title: "Agriculture & Farm Operations",
@@ -83,6 +88,15 @@ const experienceGroups = {
         date: "2021 — 2022 seasonal",
         text: "Operated Colossus XL olive harvester and other machinery, adjusted equipment for performance, reported malfunctions, and cared for machinery."
       }
+    ],
+    references: [
+      { name: "Viridis AG", contact: "James Lyall", phone: "+61 428 960 488" },
+      { name: "Corian Park Earthmoving", contact: "Drew Chislett", phone: "+61 401 186 155" },
+      { name: "Cobram Estate", contact: "Rachel Walker", phone: "+61 418 281 481" }
+    ],
+    referenceLetters: [
+      { title: "Download Viridis reference letter", href: "/references/Viridis%20reference%20letter.pdf" },
+      { title: "Download Corian Park reference letter", href: "/references/Employment%20reference%20Corian%20park%20.pdf" }
     ]
   },
   hospitality: {
@@ -109,6 +123,10 @@ const experienceGroups = {
         date: "Germany",
         text: "Led hospitality teams at major exhibitions including DMEXCO and Gamescom, supporting front-of-house operations, customer service, and team coordination."
       }
+    ],
+    references: [
+      { name: "Beacon Point Villas", contact: "Natasha Sikand", phone: "+61 409 944 878" },
+      { name: "Janus Co Pty Ltd", contact: "Philip Amos", phone: "+61 418 645 666" }
     ]
   },
   business: {
@@ -134,6 +152,26 @@ const experienceGroups = {
         company: "Startup Environment",
         date: "Early career",
         text: "Worked in a startup office environment, gaining exposure to fast-moving business operations, teamwork, customer communication, and entrepreneurial thinking."
+      }
+    ]
+  },
+  other: {
+    title: "Other Jobs",
+    icon: <Award />,
+    intro: "Additional hands-on experience across construction, roofing and renewable energy projects.",
+    photos: otherJobPhotos,
+    jobs: [
+      {
+        role: "Solar Farm Trade Assistant",
+        company: "Chandler Macleod",
+        date: "Feb 2022 — Apr 2022",
+        text: "Supported solar farm construction through panel installation and tracking-system installation."
+      },
+      {
+        role: "Roofing Labourer",
+        company: "Roofsmart",
+        date: "Mar 2020 — Jun 2020",
+        text: "Worked on metal roofing projects, including cutting felt, metal sheets and flashing, removing old roofing materials, keeping worksites clean and organised, and screwing off roof surfaces."
       }
     ]
   }
@@ -272,7 +310,7 @@ export default function DominikPortfolio() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {Object.entries(experienceGroups).map(([key, group]) => (
               <CategoryCard key={key} groupKey={key} group={group} onExplore={() => setActivePage(key)} />
             ))}
@@ -386,12 +424,18 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7">
                 <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">
-                  {groupKey === "farm" ? "Machinery & Operations" : "Properties & Guest Spaces"}
+                  {groupKey === "farm"
+                    ? "Machinery & Operations"
+                    : groupKey === "hospitality"
+                      ? "Properties & Guest Spaces"
+                      : "Other Jobs"}
                 </p>
                 <p className="mt-3 max-w-2xl text-lg leading-8 text-white/75">
                   {groupKey === "farm"
                     ? "Some of the machinery I have operated across various workplaces."
-                    : "A selection of the properties and guest spaces I looked after."}
+                    : groupKey === "hospitality"
+                      ? "A selection of the properties and guest spaces I looked after."
+                      : "A selection of hands-on work across roofing and renewable energy projects."}
                 </p>
               </div>
               <button type="button" onClick={prev} className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white hover:bg-[#d6a94a] hover:text-black"><ChevronLeft /></button>
@@ -417,7 +461,9 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
           <p className="max-w-3xl text-lg leading-8 text-white/65">
             {groupKey === "farm"
               ? "A selection of machinery, equipment and agricultural operations I have worked with across harvesting, olive production, grain handling, transport and general farm operations."
-              : "A small selection of properties I looked after and helped prepare for guests. Responsibilities included presentation standards, guest readiness, quality checks and maintaining premium accommodation spaces."}
+              : groupKey === "hospitality"
+                ? "A small selection of properties I looked after and helped prepare for guests. Responsibilities included presentation standards, guest readiness, quality checks and maintaining premium accommodation spaces."
+                : "A selection of hands-on work from roofing and solar farm projects, including metal roofing, panel installation and tracking-system installation."}
           </p>
         </section>
       )}
@@ -439,12 +485,41 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
         </div>
       </section>
 
-      {groupKey === "business" && (
+      {(group.references || group.referenceLetters) && (
         <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10 lg:px-16">
-          <div className="rounded-xl border border-white/10 bg-white/[0.04] p-8 md:p-10">
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">Key lessons</p>
-            <p className="max-w-4xl text-2xl leading-relaxed text-white/78">My business background taught me that strong results come from consistency, clear communication, research, adaptability and building trust with people. It helped me develop a practical way of thinking that I now bring into every professional environment.</p>
+          <div className="mb-8">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#d6a94a]">References</p>
+            <div className="h-px w-12 bg-[#d6a94a]" />
           </div>
+
+          {group.references && (
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {group.references.map((reference) => (
+                <article key={reference.name} className="rounded-xl border border-white/10 bg-white/[0.04] p-7">
+                  <h2 className="text-2xl font-black uppercase leading-none tracking-[-0.05em]">{reference.name}</h2>
+                  <p className="mt-3 font-semibold text-[#d6a94a]">{reference.contact}</p>
+                  <a href={`tel:${reference.phone.replaceAll(" ", "")}`} className="mt-5 inline-flex items-center gap-3 text-white/70 transition hover:text-[#d6a94a]">
+                    <Phone className="h-5 w-5 text-[#d6a94a]" /> {reference.phone}
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
+
+          {group.referenceLetters && (
+            <div className="mt-8 flex flex-wrap gap-4">
+              {group.referenceLetters.map((letter) => (
+                <a
+                  key={letter.href}
+                  href={letter.href}
+                  download
+                  className="border border-[#d6a94a] px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-[#d6a94a] transition hover:bg-[#d6a94a] hover:text-black"
+                >
+                  {letter.title}
+                </a>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
