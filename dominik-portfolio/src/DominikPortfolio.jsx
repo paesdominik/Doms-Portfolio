@@ -629,11 +629,11 @@ function ResumeModal({ onClose }) {
           <button type="button" onClick={onClose} className="text-white/70 hover:text-white"><X /></button>
         </div>
         <div className="space-y-4 text-base">
-          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="/resumes/Dominik-Hospitality-Resume.pdf" download>
+          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="references/housekeeping%3Ahospitality%20resume%202026%20pdf.pdf" download>
             <span className="block font-bold uppercase tracking-[0.12em]">Hospitality resume</span>
             <span className="mt-2 block text-sm text-white/50">Housekeeping, bartending, guest service and events.</span>
           </a>
-          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="/resumes/Dominik-Labouring-Resume.pdf" download>
+          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="references/Labouring%20resume%202026.pdf" download>
             <span className="block font-bold uppercase tracking-[0.12em]">Agriculture & labouring resume</span>
             <span className="mt-2 block text-sm text-white/50">Machinery, farm operations, construction and labouring.</span>
           </a>
