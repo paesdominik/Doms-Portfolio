@@ -222,6 +222,7 @@ const highlights = [
 
 export default function DominikPortfolio() {
   const [showContact, setShowContact] = useState(false);
+  const [showResume, setShowResume] = useState(false);
   const [activePage, setActivePage] = useState(null);
 
   const scrollToSection = (id) => {
@@ -270,6 +271,9 @@ export default function DominikPortfolio() {
             <div className="mt-10 flex flex-wrap gap-4">
               <button type="button" onClick={() => scrollToSection("about")} className="group flex items-center gap-3 bg-[#d6a94a] px-7 py-4 text-sm font-bold uppercase tracking-[0.15em] text-black transition hover:bg-white">
                 Learn more <ChevronDown className="h-4 w-4 transition group-hover:translate-y-1" />
+              </button>
+              <button type="button" onClick={() => setShowResume(true)} className="border border-[#d6a94a] px-7 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#d6a94a] hover:text-black">
+                Download resume
               </button>
               <button type="button" onClick={() => setShowContact(true)} className="border border-[#d6a94a] px-7 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#d6a94a] hover:text-black">
                 Contact me
@@ -355,6 +359,7 @@ export default function DominikPortfolio() {
 
       <Footer onContact={() => setShowContact(true)} />
       {showContact && <ContactModal onClose={() => setShowContact(false)} />}
+      {showResume && <ResumeModal onClose={() => setShowResume(false)} />}
     </main>
   );
 }
@@ -607,6 +612,34 @@ function Footer({ onContact }) {
       </div>
       <p className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 text-center text-sm text-white/40">© 2026 Dominik Paes. All rights reserved.</p>
     </footer>
+  );
+}
+
+
+function ResumeModal({ onClose }) {
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-5 backdrop-blur-sm" onClick={onClose}>
+      <motion.div initial={{ opacity: 0, scale: 0.92, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.25 }} className="w-full max-w-md rounded-xl border border-[#d6a94a]/30 bg-[#101211] p-8 text-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
+        <div className="mb-8 flex items-start justify-between gap-6">
+          <div>
+            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#d6a94a]/15 text-[#d6a94a]"><BookOpen /></div>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#d6a94a]">Download resume</p>
+            <h3 className="mt-3 text-3xl font-black tracking-[-0.06em]">Choose a resume</h3>
+          </div>
+          <button type="button" onClick={onClose} className="text-white/70 hover:text-white"><X /></button>
+        </div>
+        <div className="space-y-4 text-base">
+          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="/resumes/Dominik-Hospitality-Resume.pdf" download>
+            <span className="block font-bold uppercase tracking-[0.12em]">Hospitality resume</span>
+            <span className="mt-2 block text-sm text-white/50">Housekeeping, bartending, guest service and events.</span>
+          </a>
+          <a className="block rounded-xl border border-white/10 p-5 text-white/75 transition hover:border-[#d6a94a] hover:text-[#d6a94a]" href="/resumes/Dominik-Labouring-Resume.pdf" download>
+            <span className="block font-bold uppercase tracking-[0.12em]">Agriculture & labouring resume</span>
+            <span className="mt-2 block text-sm text-white/50">Machinery, farm operations, construction and labouring.</span>
+          </a>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
