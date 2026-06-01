@@ -312,7 +312,10 @@ export default function DominikPortfolio() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {Object.entries(experienceGroups).map(([key, group]) => (
-              <CategoryCard key={key} groupKey={key} group={group} onExplore={() => setActivePage(key)} />
+              <CategoryCard key={key} groupKey={key} group={group} onExplore={() => {
+                setActivePage(key);
+                window.scrollTo({ top: 0, behavior: "instant" });
+              }} />
             ))}
           </div>
         </div>
@@ -395,7 +398,10 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
             <button
               key={key}
               type="button"
-              onClick={() => onChangeCategory(key)}
+              onClick={() => {
+                onChangeCategory(key);
+                window.scrollTo({ top: 0, behavior: "instant" });
+              }}
               className={`rounded-full px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] transition ${
                 groupKey === key
                   ? "bg-[#d6a94a] text-black"
@@ -420,7 +426,13 @@ function CategoryPage({ groupKey, onBack, onContact, onChangeCategory, showConta
         {hasPhotos ? (
           <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.03] p-5">
             <div className="relative h-[430px] overflow-hidden rounded-lg bg-black">
-              <img src={currentPhoto.src} alt={currentPhoto.title} className="h-full w-full object-cover" />
+              <img
+                src={currentPhoto.src}
+                alt={currentPhoto.title}
+                className={`h-full w-full ${
+                  groupKey === "other" ? "object-contain bg-black" : "object-cover"
+                }`}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7">
                 <p className="text-sm uppercase tracking-[0.3em] text-[#d6a94a]">
