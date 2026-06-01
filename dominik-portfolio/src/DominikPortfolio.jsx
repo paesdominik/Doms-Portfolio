@@ -239,7 +239,7 @@ export default function DominikPortfolio() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#070807] text-white selection:bg-[#d6a94a]/60">
       <section id="top" className="relative min-h-screen overflow-hidden">
-        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-y-0 left-0 h-full w-[115%] max-w-none translate-x-[6%] object-cover object-center md:translate-x-[8%]" />
+        <img src={heroImage} alt="Dominik Paes outdoors in the mountains" className="absolute inset-y-0 left-0 h-full w-[105%] max-w-none translate-x-[2%] object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/5" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070807] via-transparent to-black/20" />
 
