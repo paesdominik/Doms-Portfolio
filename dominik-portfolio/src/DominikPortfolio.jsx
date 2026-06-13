@@ -156,39 +156,45 @@ const experienceGroups = {
     ]
   },
   other: {
-    title: "Other Jobs",
-    icon: <Award />,
-    intro: "Additional hands-on experience across construction, roofing and renewable energy projects.",
-    photos: otherJobPhotos,
-    jobs: [
-      {
-        role: "Customer Service & Vehicle Operations Assistant",
-        company: "CutPrice Car Rental",
-        date: "Oct 2025 — Apr 2026",
-        text: "Provided vehicle detailing and preparation, delivered high-quality customer service throughout the rental process, and operated shuttle buses transporting customers between airport terminals and rental locations."
-      },
-      {
-        role: "Solar Farm Trade Assistant",
-        company: "Chandler Macleod",
-        date: "Feb 2022 — Apr 2022",
-        text: "Supported solar farm construction through panel installation and tracking-system installation."
-      },
-      {
-        role: "Roofing Labourer",
-        company: "Roofsmart",
-        date: "Mar 2020 — Jun 2020",
-        text: "Worked on metal roofing projects, including cutting felt, metal sheets and flashing, removing old roofing materials, keeping worksites clean and organised, and screwing off roof surfaces."
-      }
-    ],
-    references: [
-      {
-        name: "CutPrice Car Rental",
-        contact: "Gustavo Barbeta",
-        phone: "+61 404 763 671"
-      }
-    ]
-  }
-};
+  title: "Other Jobs",
+  icon: <Award />,
+  intro: "Additional hands-on experience across construction, roofing and renewable energy projects.",
+  photos: otherJobPhotos,
+  jobs: [
+    {
+      role: "Customer Service & Vehicle Operations Assistant",
+      company: "CutPrice Car Rental",
+      date: "Oct 2025 — Apr 2026",
+      text: "Provided vehicle detailing and preparation, delivered high-quality customer service throughout the rental process, and operated shuttle buses transporting customers between airport terminals and rental locations."
+    },
+    {
+      role: "Solar Farm Trade Assistant",
+      company: "Chandler Macleod",
+      date: "Feb 2022 — Apr 2022",
+      text: "Supported solar farm construction through panel installation and tracking-system installation."
+    },
+    {
+      role: "Roofing Labourer",
+      company: "Roofsmart",
+      date: "Mar 2020 — Jun 2020",
+      text: "Worked on metal roofing projects, including cutting felt, metal sheets and flashing, removing old roofing materials, keeping worksites clean and organised, and screwing off roof surfaces."
+    }
+  ],
+
+  references: [
+    {
+      name: "CutPrice Car Rental",
+      contact: "Gustavo Barbeta",
+      phone: "+61 404 763 671"
+    }
+  ],
+
+  referenceLetters: [
+    {
+      title: "Download CutPrice employment reference",
+      href: "/references/CutPrice-Reference-Letter.jpg"
+    }
+  ]
 
 const skills = [
   "Heavy machinery operation",
